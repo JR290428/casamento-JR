@@ -4,41 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casamento João & Rayane</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <script src="js/countdown.js" defer></script>
 </head>
 <body>
 
-  <!-- Monograma -->
-  <section id="monograma" style="text-align:center; margin-top:30px;">
-    <img src="img/monograma.png" alt="Monograma dos Noivos" style="height:5cm;">
-  </section>
+  <!-- Seção inicial -->
+  <section id="inicio" style="text-align: center; padding: 40px;">
+    <!-- Monograma -->
+    <img src="images/monograma.png" alt="Monograma João e Rayane" style="width:120px; margin-bottom:15px;">
 
-  <!-- Nomes -->
-  <section id="nomes" style="text-align:center; margin-top:20px;">
-    <h1 style="font-family:'Dancing Script', cursive; font-size:14px;">
+    <!-- Nomes -->
+    <h1 style="font-family: 'Dancing Script', cursive; font-size: 32px; margin: 5px 0; color:#4a6b51;">
       João Vitor & Rayane
     </h1>
+
+    <!-- Data -->
+    <h2 style="font-size: 20px; color:#4a6b51; margin-bottom: 30px;">
+      29 de Abril de 2028
+    </h2>
   </section>
 
-  <!-- Data -->
-  <section id="data" style="text-align:center; margin:10px 0;">
-    <h2 style="font-size:20px;">29 de Abril de 2028</h2>
+  <!-- Contagem regressiva -->
+  <section id="countdown" style="text-align: center; padding: 20px;">
+    <h3 style="color:#4a6b51; margin-bottom:10px;">Contagem regressiva</h3>
+    <div id="timer" style="font-size: 24px; font-weight:bold; color:#333;"></div>
   </section>
 
-  <!-- Contagem Regressiva -->
-  <section id="countdown" style="text-align:center; margin:40px 0;">
-    <h2>Faltam...</h2>
-    <div id="timer" style="font-size:22px; font-weight:bold;"></div>
+  <!-- Navegação -->
+  <section id="links" style="text-align: center; margin-top: 40px;">
+    <a href="pages/rsvp.html" class="botao">Confirmar Presença</a>
+    <a href="pages/presentes.html" class="botao">Lista de Presentes</a>
+    <a href="pages/cronograma.html" class="botao">Localização & Cronograma</a>
+    <a href="pages/galeria.html" class="botao">Galeria</a>
   </section>
 
-  <!-- Menu de acessos -->
-  <section id="menu" style="text-align:center; margin-top:50px;">
-    <a href="pages/rsvp.html" class="btn">Confirmar Presença</a>
-    <a href="pages/gifts.html" class="btn">Lista de Presentes</a>
-    <a href="pages/cronograma.html" class="btn">Localização & Cronograma</a>
-    <a href="pages/gallery.html" class="btn">Galeria</a>
-  </section>
+  <script>
+    // Script de contagem regressiva
+    const targetDate = new Date("2028-04-29T14:30:00").getTime();
 
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "O grande dia chegou!";
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").innerHTML = 
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    }, 1000);
+  </script>
 </body>
 </html>
