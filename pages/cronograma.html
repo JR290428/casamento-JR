@@ -2,14 +2,43 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Cronograma - João & Rayane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronograma & Localização - João & Rayane</title>
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <h1>Cronograma do Casamento</h1>
-  <ul>
-    <li>14:30h – Cerimônia</li>
-    <li>16:30h – Brunch</li>
-    <li>20:00h – After 🎶</li>
-  </ul>
+
+  <header>
+    <h1>Cronograma & Localização</h1>
+  </header>
+
+  <!-- Mapa -->
+  <section>
+    <h2>Local da Cerimônia</h2>
+    <div class="map-container">
+      <!-- Substitua o src abaixo pelo do seu endereço no Google Maps -->
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=..." 
+        allowfullscreen="" loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Cronograma -->
+  <section>
+    <h2>Nosso Dia Especial</h2>
+    <div class="box">
+      <p><strong>14:30h</strong> – Cerimônia</p>
+      <p><strong>16:30h</strong> – Brunch</p>
+      <p><strong>20:00h</strong> – After</p>
+    </div>
+  </section>
+
+  <!-- Botão de voltar -->
+  <section>
+    <a href="../index.html" class="btn">Voltar para Início</a>
+  </section>
+
 </body>
 </html>
