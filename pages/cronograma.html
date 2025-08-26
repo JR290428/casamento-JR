@@ -3,42 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cronograma & Localização - João & Rayane</title>
+  <title>Cronograma | João & Rayane</title>
   <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .banner {
+      width: 100%;
+      height: 60vh;
+      background: url("../images/local.jpg") no-repeat center center/cover;
+    }
+    .conteudo {
+      text-align: center;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .local {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4a6b51;
+      margin: 20px 0;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+    .horarios {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 40px;
+    }
+    .mensagem {
+      font-size: 20px;
+      color: #4a6b51;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>Cronograma & Localização</h1>
-  </header>
+  <!-- Banner com imagem -->
+  <div class="banner"></div>
 
-  <!-- Mapa -->
-  <section>
-    <h2>Local da Cerimônia</h2>
-    <div class="map-container">
-      <!-- Substitua o src abaixo pelo do seu endereço no Google Maps -->
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=..." 
-        allowfullscreen="" loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </section>
+  <!-- Conteúdo -->
+  <div class="conteudo">
+    <!-- Local -->
+    <div class="local">Fazenda Paraíso - Serra Catarinense</div>
 
-  <!-- Cronograma -->
-  <section>
-    <h2>Nosso Dia Especial</h2>
-    <div class="box">
+    <!-- Mapa Google -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.2602781940704!2d-49.7131261!3d-27.9757349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e013b2c89f57d9%3A0x9ad1e7af7c5ff6a5!2sSerra%20Catarinense!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <!-- Horários -->
+    <div class="horarios">
       <p><strong>14:30h</strong> – Cerimônia</p>
       <p><strong>16:30h</strong> – Brunch</p>
       <p><strong>20:00h</strong> – After</p>
     </div>
-  </section>
 
-  <!-- Botão de voltar -->
-  <section>
-    <a href="../index.html" class="btn">Voltar para Início</a>
-  </section>
+    <!-- Mensagem -->
+    <div class="mensagem">Estamos contando os dias para celebrar com você. 💚<br>Aguardamos sua presença!</div>
+  </div>
 
 </body>
 </html>
