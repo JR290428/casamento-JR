@@ -2,10 +2,184 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Galeria - João & Rayane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria | João & Rayane</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #4a6b51;
+      margin-top: 20px;
+    }
+
+    /* Navegação de álbuns */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .tab {
+      background: #4a6b51;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tab:hover {
+      background: #36533e;
+    }
+
+    .tab.active {
+      background: #2d422f;
+    }
+
+    /* Galeria */
+    .album {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .album.active {
+      display: grid;
+    }
+
+    .foto {
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fafafa;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .foto img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .legenda {
+      padding: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .acoes {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px 10px;
+    }
+
+    .like {
+      cursor: pointer;
+      font-size: 20px;
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .like.active {
+      color: red;
+    }
+
+    .baixar {
+      font-size: 14px;
+      background: #4a6b51;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .baixar:hover {
+      background: #36533e;
+    }
+  </style>
 </head>
 <body>
-  <h1>Galeria de Fotos</h1>
-  <p>Em breve, as fotos do pré-wedding, cerimônia e festa estarão aqui 💖</p>
+
+  <h1>Galeria de Memórias</h1>
+
+  <!-- Abas de navegação -->
+  <div class="tabs">
+    <button class="tab active" onclick="mostrarAlbum('prewedding')">Pré-Wedding</button>
+    <button class="tab" onclick="mostrarAlbum('cerimonia')">Cerimônia</button>
+    <button class="tab" onclick="mostrarAlbum('festa')">Festa</button>
+  </div>
+
+  <!-- Álbum Pré-Wedding -->
+  <div id="prewedding" class="album active">
+    <div class="foto">
+      <img src="../images/pre1.jpg" alt="Pré-Wedding 1">
+      <div class="legenda">Sessão pré-wedding 1</div>
+      <div class="acoes">
+        <span class="like" onclick="toggleLike(this)">❤️</span>
+        <button class="baixar">Baixar</button>
+      </div>
+    </div>
+    <div class="foto">
+      <img src="../images/pre2.jpg" alt="Pré-Wedding 2">
+      <div class="legenda">Sessão pré-wedding 2</div>
+      <div class="acoes">
+        <span class="like" onclick="toggleLike(this)">❤️</span>
+        <button class="baixar">Baixar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Álbum Cerimônia -->
+  <div id="cerimonia" class="album">
+    <div class="foto">
+      <img src="../images/cer1.jpg" alt="Cerimônia 1">
+      <div class="legenda">Cerimônia - Entrada dos noivos</div>
+      <div class="acoes">
+        <span class="like" onclick="toggleLike(this)">❤️</span>
+        <button class="baixar">Baixar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Álbum Festa -->
+  <div id="festa" class="album">
+    <div class="foto">
+      <img src="../images/festa1.jpg" alt="Festa 1">
+      <div class="legenda">Festa - Pista de dança</div>
+      <div class="acoes">
+        <span class="like" onclick="toggleLike(this)">❤️</span>
+        <button class="baixar">Baixar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function mostrarAlbum(id) {
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.album').forEach(album => album.classList.remove('active'));
+
+      document.querySelector(`[onclick="mostrarAlbum('${id}')"]`).classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+
+    function toggleLike(element) {
+      element.classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
