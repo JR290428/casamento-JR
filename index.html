@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
+      background: #ffffff;
       color: #333;
       text-align: center;
     }
@@ -18,83 +18,111 @@
     }
     header img {
       width: 120px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     header h1 {
       font-family: 'Dancing Script', cursive;
-      font-size: 32px;
+      font-size: 42px;
       color: #4a6b51;
-      margin: 5px 0;
+      margin: 10px 0;
     }
     header h2 {
-      font-size: 20px;
+      font-size: 28px;
       color: #4a6b51;
       margin-bottom: 30px;
     }
+    /* Estilo da contagem regressiva */
     .countdown {
-      font-size: 22px;
-      font-weight: bold;
-      color: #333;
-      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 40px auto;
+      flex-wrap: wrap;
     }
+    .count-box {
+      background: #4a6b51;
+      color: white;
+      padding: 20px;
+      border-radius: 15px;
+      min-width: 80px;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+    .count-box span {
+      display: block;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    /* Botões de navegação */
     .buttons {
       display: flex;
       flex-direction: column;
       gap: 15px;
-      max-width: 280px;
-      margin: 30px auto;
+      max-width: 300px;
+      margin: 40px auto;
     }
     .buttons a {
       text-decoration: none;
-      padding: 12px;
-      border-radius: 25px;
-      font-size: 16px;
+      padding: 15px;
+      border-radius: 30px;
+      font-size: 18px;
       font-weight: bold;
-      background-color: #4a6b51;
+      background: #4a6b51;
       color: #fff;
       transition: 0.3s;
       border: 2px solid #4a6b51;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
     }
     .buttons a:hover {
-      background-color: #fff;
+      background: #fff;
       color: #4a6b51;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 14px;
+      color: #555;
     }
   </style>
 </head>
 <body>
   <header>
-    <!-- Monograma -->
     <img src="images/monograma.png" alt="Monograma João e Rayane">
-
-    <!-- Nomes -->
     <h1>João Vitor & Rayane</h1>
-
-    <!-- Data -->
     <h2>29 de Abril de 2028</h2>
   </header>
 
-  <!-- Contagem Regressiva -->
-  <div class="countdown" id="countdown"></div>
-
-  <!-- Botões de navegação -->
-  <div class="buttons">
-    <a href="rsvp.html">Confirmar Presença</a>
-    <a href="presentes.html">Lista de Presentes</a>
-    <a href="cronograma.html">Localização & Cronograma</a>
-    <a href="galeria.html">Galeria de Fotos</a>
+  <!-- Contagem regressiva estilo calendário -->
+  <div class="countdown">
+    <div class="count-box" id="days">0<span>Dias</span></div>
+    <div class="count-box" id="hours">0<span>Horas</span></div>
+    <div class="count-box" id="minutes">0<span>Min</span></div>
+    <div class="count-box" id="seconds">0<span>Seg</span></div>
   </div>
+
+  <!-- Botões principais -->
+  <div class="buttons">
+    <a href="rsvp.html">📋 Confirmar Presença</a>
+    <a href="presentes.html">🎁 Lista de Presentes</a>
+    <a href="cronograma.html">📍 Localização & Cronograma</a>
+    <a href="galeria.html">📸 Galeria de Fotos</a>
+  </div>
+
+  <footer>
+    Com muito carinho, aguardamos você no nosso grande dia 💚
+  </footer>
 
   <script>
     // Contagem regressiva
     const targetDate = new Date("April 29, 2028 14:30:00").getTime();
-    const countdownElement = document.getElementById("countdown");
 
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
       if (distance < 0) {
-        countdownElement.innerHTML = "O grande dia chegou! 💍";
+        document.querySelector(".countdown").innerHTML = "O grande dia chegou! 💍";
         return;
       }
 
@@ -103,7 +131,10 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdownElement.innerHTML = `${days} dias ${hours}h ${minutes}m ${seconds}s`;
+      document.getElementById("days").innerHTML = days + "<span>Dias</span>";
+      document.getElementById("hours").innerHTML = hours + "<span>Horas</span>";
+      document.getElementById("minutes").innerHTML = minutes + "<span>Min</span>";
+      document.getElementById("seconds").innerHTML = seconds + "<span>Seg</span>";
     }
 
     setInterval(updateCountdown, 1000);
