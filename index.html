@@ -3,53 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casamento João & Rayane</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <title>João & Rayane - Casamento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      padding: 40px 20px 20px;
+    }
+    header img {
+      width: 120px;
+      margin-bottom: 15px;
+    }
+    header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 32px;
+      color: #4a6b51;
+      margin: 5px 0;
+    }
+    header h2 {
+      font-size: 20px;
+      color: #4a6b51;
+      margin-bottom: 30px;
+    }
+    .countdown {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      margin: 20px 0;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 280px;
+      margin: 30px auto;
+    }
+    .buttons a {
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #4a6b51;
+      color: #fff;
+      transition: 0.3s;
+      border: 2px solid #4a6b51;
+    }
+    .buttons a:hover {
+      background-color: #fff;
+      color: #4a6b51;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Seção inicial -->
-  <section id="inicio" style="text-align: center; padding: 40px;">
+  <header>
     <!-- Monograma -->
-    <img src="images/monograma.png" alt="Monograma João e Rayane" style="width:120px; margin-bottom:15px;">
+    <img src="images/monograma.png" alt="Monograma João e Rayane">
 
     <!-- Nomes -->
-    <h1 style="font-family: 'Dancing Script', cursive; font-size: 32px; margin: 5px 0; color:#4a6b51;">
-      João Vitor & Rayane
-    </h1>
+    <h1>João Vitor & Rayane</h1>
 
     <!-- Data -->
-    <h2 style="font-size: 20px; color:#4a6b51; margin-bottom: 30px;">
-      29 de Abril de 2028
-    </h2>
-  </section>
+    <h2>29 de Abril de 2028</h2>
+  </header>
 
-  <!-- Contagem regressiva -->
-  <section id="countdown" style="text-align: center; padding: 20px;">
-    <h3 style="color:#4a6b51; margin-bottom:10px;">Contagem regressiva</h3>
-    <div id="timer" style="font-size: 24px; font-weight:bold; color:#333;"></div>
-  </section>
+  <!-- Contagem Regressiva -->
+  <div class="countdown" id="countdown"></div>
 
-  <!-- Navegação -->
-  <section id="links" style="text-align: center; margin-top: 40px;">
-    <a href="pages/rsvp.html" class="botao">Confirmar Presença</a>
-    <a href="pages/presentes.html" class="botao">Lista de Presentes</a>
-    <a href="pages/cronograma.html" class="botao">Localização & Cronograma</a>
-    <a href="pages/galeria.html" class="botao">Galeria</a>
-  </section>
+  <!-- Botões de navegação -->
+  <div class="buttons">
+    <a href="rsvp.html">Confirmar Presença</a>
+    <a href="presentes.html">Lista de Presentes</a>
+    <a href="cronograma.html">Localização & Cronograma</a>
+    <a href="galeria.html">Galeria de Fotos</a>
+  </div>
 
   <script>
-    // Script de contagem regressiva
-    const targetDate = new Date("2028-04-29T14:30:00").getTime();
+    // Contagem regressiva
+    const targetDate = new Date("April 29, 2028 14:30:00").getTime();
+    const countdownElement = document.getElementById("countdown");
 
-    const timer = setInterval(() => {
+    function updateCountdown() {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
       if (distance < 0) {
-        document.getElementById("timer").innerHTML = "O grande dia chegou!";
-        clearInterval(timer);
+        countdownElement.innerHTML = "O grande dia chegou! 💍";
         return;
       }
 
@@ -58,9 +103,11 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById("timer").innerHTML = 
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-    }, 1000);
+      countdownElement.innerHTML = `${days} dias ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
